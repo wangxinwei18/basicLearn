@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ref引用DOM节点</title>
+    <script src='./vue.js'></script>
+</head>
+
+<body>
+    <div id="root">
+        <div ref='hello' @click="handleClick">hello world</div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#root",
+            methods: {
+                handleClick: function () {
+                    console.log(this.$refs.hello.innerHTML)
+                }
+            }
+        })  
+    </script>
+</body>
+
+</html>

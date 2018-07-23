@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>父子组件数据传递</title>
+    <script src='./vue.js'></script>
+</head>
+
+<body>
+    <div id="root">
+        <counter :count="0" @inc="handleIncrease"></counter>
+        <counter :count="0" @inc="handleIncrease"></counter>
+        <div>{{total}}</div>
+    </div>
+    <script>
+        var counter = {
+            props: ['count'],
+            data: function () {
+                return {
+                    number: this.count
+                }
+            },
+            template: '<div @click="handleClick">{{number}}</div>',
+            methods: {
+                handleClick: function () {
+                    this.number = this.number + 2;
+                    this.$emit('inc', 2)
+                }
+            }
+        }
+        var vm = new Vue({
+            el: "#root",
+            components: {
+                counter: counter
+            },
+            data: {
+                total: 0
+            },
+            methods: {
+                handleIncrease: function(step) {
+                    this.total += step
+                }
+            }
+        })  
+    </script>
+</body>
+
+</html>
