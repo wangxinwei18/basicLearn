@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>使用X-Template</title>
+    <script src='./vue.js'></script>
+</head>
+
+<body>
+    <div id="root">
+       <child-component>
+           <h2 slot="header">标题</h2>
+           <p>分发的内容</p>
+           <p>更多分发的内容</p>
+           <div slot="footer">底部信息</div>
+       </child-component>
+    </div>
+    <script type="text/x-template" id="child-component">
+        <div class="container">
+                <div class="header"><slot name="header"></slot></div>
+                <div class="main"><slot></slot></div>
+                <div class="footer"><slot name="footer"></slot></div>
+        </div>
+    </script>
+    <script>
+        Vue.component('child-component', {
+            template: '#child-component'
+        })
+        
+        var vm = new Vue({
+            el: "#root"
+        })  
+    </script>
+</body>
+
+</html>

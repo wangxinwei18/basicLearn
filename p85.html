@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>slot替代子组件</title>
+    <script src='./vue.js'></script>
+</head>
+
+<body>
+    <div id="root">
+       <child-component>
+           <p>分发的内容</p>
+           <p>更多分发的内容</p>
+       </child-component>
+    </div>
+    <script>
+        Vue.component('child-component', {
+            template: `<div><slot><p>如果父组件没有插入内容，我将作为默认出现</p></slot></div>`,
+        })
+        
+        var vm = new Vue({
+            el: "#root"
+        })  
+    </script>
+</body>
+
+</html>

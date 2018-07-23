@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>具名slot</title>
+    <script src='./vue.js'></script>
+</head>
+
+<body>
+    <div id="root">
+        <child-component>
+            <template scope="props">
+                <p>来自父组件的内容</p>
+                <p>{{props.msg}}</p>
+            </template>
+        </child-component>
+    </div>
+    <script>
+        Vue.component('child-component', {
+            template: `<div class="container">
+                        <slot msg="来自子组件的内容"></slot>
+                       </div>`
+        })
+
+        var vm = new Vue({
+            el: "#root"
+        })  
+    </script>
+</body>
+
+</html>
