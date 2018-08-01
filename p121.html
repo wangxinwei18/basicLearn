@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>传入对象字面量</title>
+    <script src='./vue.js'></script>
+</head>
+
+<body>
+    <div id="root">
+       <div v-test="{msg: 'hello', name: 'Aresn'}"></div>
+    </div>
+    <script>
+        Vue.directive('test', {
+          bind: function (el, binding, vnode) {
+              console.log(binding.value.msg);
+              console.log(binding.value.name);
+          }
+        });
+        
+       var app = new Vue({
+           el: '#root'
+       })
+    </script>
+</body>
+
+</html>

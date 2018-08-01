@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>聚焦元素</title>
+    <script src='./vue.js'></script>
+</head>
+
+<body>
+    <div id="root">
+       <input type="text" v-focus>
+    </div>
+    <script>
+        Vue.directive('focus', {
+          inserted: function (el) {
+              el.focus();
+          }
+        });
+        
+       var app = new Vue({
+           el: '#root'
+       })
+    </script>
+</body>
+
+</html>
